@@ -1,0 +1,4 @@
+- Plain Rectangular Room
+- Basically untextured (maybe a solid color?)
+- Put a light in the center of the ceiling
+- Place a player object inside so I can see things

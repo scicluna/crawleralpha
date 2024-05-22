@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo (MVP).md",
+                "file": "Basic Environment/Tutorial.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Todo (MVP).md",
+                "file": "Basic Environment/Tutorial.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Todo (MVP).md",
+                "file": "Basic Environment/Tutorial.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Todo (MVP).md"
+                "file": "Basic Environment/Tutorial.md"
               }
             }
           }
@@ -148,7 +148,10 @@
   },
   "active": "21139de26faff18c",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Todo (MVP).md"
+    "Basic Environment/Plan.md",
+    "Basic Environment/Tutorial.md",
+    "Todo (MVP).md",
+    "Basic Environment",
+    "Welcome.md"
   ]
 }

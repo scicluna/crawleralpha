@@ -5,6 +5,7 @@
 
 ### Player Mechanics
 -  **1st Person Camera**
+	- [ ]  Place a user scene
     - [ ]  Implement a 1st person camera with mouse look functionality.
     - [ ]  Ensure smooth camera rotation and movement.
 -  **Simple Movement**
