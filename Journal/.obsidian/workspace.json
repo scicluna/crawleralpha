@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Big Plans/1 Premise.md",
+                "file": "Basic Environment/Tutorial.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Big Plans/1 Premise.md",
+                "file": "Basic Environment/Tutorial.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Big Plans/1 Premise.md",
+                "file": "Basic Environment/Tutorial.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Big Plans/1 Premise.md"
+                "file": "Basic Environment/Tutorial.md"
               }
             }
           }
@@ -148,11 +148,11 @@
   },
   "active": "21139de26faff18c",
   "lastOpenFiles": [
+    "Basic Environment/Plan.md",
     "Todo (MVP).md",
     "Big Plans/1 Premise.md",
     "Big Plans",
     "Basic Environment/Tutorial.md",
-    "Basic Environment/Plan.md",
     "Basic Environment",
     "Welcome.md"
   ]
