@@ -1,7 +1,7 @@
 ### Basic Environment
-- [ ]  **Basic Test Room**
-    - [ ]  Create a simple room with walls, floor, and ceiling.
-    - [ ]  Add basic lighting to the room.
+- [x]  **Basic Test Room**
+    - [x]  Create a simple room with walls, floor, and ceiling.
+    - [x]  Add basic lighting to the room.
 
 ### Player Mechanics
 -  **1st Person Camera**
@@ -15,6 +15,12 @@
 -  **Basic Attack**
     - [ ]  Create a basic attack animation.
     - [ ]  Implement attack hit detection (e.g., raycasting or collision detection).
+
+### Better Environment
+- [ ] Make something nicer
+- [ ] Textures
+- [ ] Lighting
+- [ ] Better Grid Allocation
 
 ### User Interface
 -  **Basic UI (health/mana)**
