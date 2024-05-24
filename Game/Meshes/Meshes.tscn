@@ -8,7 +8,7 @@ size = Vector3(1, 0.5, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_lp2bm"]
 size = Vector3(1, 2, 1)
 
-[node name="meshes" type="Node3D"]
+[node name="Meshes" type="Node3D"]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49392, 0, 0)

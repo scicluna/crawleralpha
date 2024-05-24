@@ -11,5 +11,5 @@ config_version=5
 [application]
 
 config/name="crawleralpha"
-run/main_scene="res://testroom.tscn"
+run/main_scene="res://Test_Room.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
