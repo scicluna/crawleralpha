@@ -1,14 +1,30 @@
 extends CharacterBody3D
 
-
-const SPEED = 5.0
+const MAX_SPEED = 10.0
+const BACKPEDAL_SPEED = 3.0
+const ACCELERATION = 20.0
+const DECELERATION = 25.0
+const AIR_DECELERATION = 10.0
 const JUMP_VELOCITY = 4.5
+const DASH_SPEED = 25.0
+const DASH_DURATION = 0.2
+const DOUBLE_TAP_TIME = 0.2
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
+
+var last_tap_times = {
+	"move_forward": 0.0,
+	"move_backward": 0.0,
+	"strafe_left": 0.0,
+	"strafe_right": 0.0
+}
+var dashing = false
+var dash_time_left = 0.0
+var dash_direction = Vector3.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -23,6 +39,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta):
+	# Handle dash timing
+	if dashing:
+		dash_time_left -= delta
+		if dash_time_left <= 0:
+			dashing = false
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -35,11 +57,60 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_backward")
 	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction: 
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+
+	# Normalize the direction vector if it has a length greater than 1 to ensure consistent speed.
+	if direction.length() > 1:
+		direction = direction.normalized()
+
+	# Handle double-tap detection for dashing
+	var current_time = Time.get_ticks_msec() / 1000.0
+	for key in last_tap_times.keys():
+		if Input.is_action_just_pressed(key):
+			if current_time - last_tap_times[key] < DOUBLE_TAP_TIME:
+				start_dash(key)
+			last_tap_times[key] = current_time
+
+	# Apply acceleration or deceleration to the horizontal velocity
+	if dashing:
+		velocity.x = dash_direction.x * DASH_SPEED
+		velocity.z = dash_direction.z * DASH_SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		var deceleration = DECELERATION if is_on_floor() else AIR_DECELERATION
+		if direction:
+			var target_speed = MAX_SPEED
+			if input_dir.y > 0:
+				target_speed = BACKPEDAL_SPEED
+
+			velocity.x = move_toward(velocity.x, direction.x * target_speed, ACCELERATION * delta)
+			velocity.z = move_toward(velocity.z, direction.z * target_speed, ACCELERATION * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+			velocity.z = move_toward(velocity.z, 0, deceleration * delta)
+
+	# Cap the speed to the maximum value if not dashing
+	if not dashing:
+		var horizontal_speed = Vector3(velocity.x, 0, velocity.z).length()
+		if horizontal_speed > MAX_SPEED:
+			var speed_ratio = MAX_SPEED / horizontal_speed
+			velocity.x *= speed_ratio
+			velocity.z *= speed_ratio
 
 	move_and_slide()
+
+func start_dash(direction_key):
+	dashing = true
+	dash_time_left = DASH_DURATION
+
+	# Reset all dash timers
+	for key in last_tap_times.keys():
+		last_tap_times[key] = 0.0
+
+	match direction_key:
+		"move_forward":
+			dash_direction = neck.transform.basis.z.normalized() * -1
+		"move_backward":
+			dash_direction = neck.transform.basis.z.normalized()
+		"strafe_left":
+			dash_direction = neck.transform.basis.x.normalized() * -1
+		"strafe_right":
+			dash_direction = neck.transform.basis.x.normalized()
