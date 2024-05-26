@@ -10,11 +10,14 @@ const DASH_SPEED = 25.0
 const DASH_DURATION = 0.2
 const DOUBLE_TAP_TIME = 0.2
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
+@onready var dash_effect := $Pivot/Camera3D/Dash_Blur
+@onready var dash_timer := $Dash/DashTimer
+@onready var dash_sound := $Dash/DashSound
+@onready var dash_cooldown_timer := $Dash/DashCooldown
 
 var last_tap_times = {
 	"move_forward": 0.0,
@@ -25,6 +28,9 @@ var last_tap_times = {
 var dashing = false
 var dash_time_left = 0.0
 var dash_direction = Vector3.ZERO
+
+func _ready():
+	dash_timer.connect("timeout", Callable(self, "_on_DashTimer_timeout"))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -44,6 +50,7 @@ func _physics_process(delta):
 		dash_time_left -= delta
 		if dash_time_left <= 0:
 			dashing = false
+			dash_timer.start(0.5)  # Start the timer for fading out the effect
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -54,7 +61,6 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_backward")
 	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
@@ -98,19 +104,33 @@ func _physics_process(delta):
 	move_and_slide()
 
 func start_dash(direction_key):
-	dashing = true
-	dash_time_left = DASH_DURATION
+	if dash_cooldown_timer.is_stopped():  # Check if the cooldown timer is stopped
+		dash_cooldown_timer.start()  # Start the cooldown timer
+		dashing = true
+		dash_time_left = DASH_DURATION
+		dash_effect.material.set_shader_parameter("effect_intensity", 1.0)  # Enable the effect
+		dash_sound.play()
 
-	# Reset all dash timers
-	for key in last_tap_times.keys():
-		last_tap_times[key] = 0.0
+		# Reset all dash timers
+		for key in last_tap_times.keys():
+			last_tap_times[key] = 0.0
 
-	match direction_key:
-		"move_forward":
-			dash_direction = neck.transform.basis.z.normalized() * -1
-		"move_backward":
-			dash_direction = neck.transform.basis.z.normalized()
-		"strafe_left":
-			dash_direction = neck.transform.basis.x.normalized() * -1
-		"strafe_right":
-			dash_direction = neck.transform.basis.x.normalized()
+		match direction_key:
+			"move_forward":
+				dash_direction = neck.transform.basis.z.normalized() * -1
+			"move_backward":
+				dash_direction = neck.transform.basis.z.normalized()
+			"strafe_left":
+				dash_direction = neck.transform.basis.x.normalized() * -1
+			"strafe_right":
+				dash_direction = neck.transform.basis.x.normalized()
+
+func _on_DashTimer_timeout():
+	var effect_intensity = dash_effect.material.get_shader_parameter("effect_intensity")
+	if effect_intensity > 0.0:
+		effect_intensity -= 0.1
+		dash_effect.material.set_shader_parameter("effect_intensity", effect_intensity)
+		dash_timer.start(0.05)  # Continue fading out
+	else:
+		dash_effect.material.set_shader_parameter("effect_intensity", 0.0)  # Ensure it's fully off
+		dash_timer.stop()

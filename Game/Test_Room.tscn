@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2bn76ausil4o"]
 
-[ext_resource type="PackedScene" uid="uid://cra5h5u0q4r6f" path="res://Player.tscn" id="1_p4vjc"]
+[ext_resource type="PackedScene" uid="uid://cra5h5u0q4r6f" path="res://Player/player.tscn" id="1_p4vjc"]
 [ext_resource type="MeshLibrary" uid="uid://cni8g8xxikebk" path="res://Meshes/Meshes.tres" id="2_y7kst"]
 
 [node name="Test_Room" type="Node3D"]
