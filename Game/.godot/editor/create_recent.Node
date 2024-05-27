@@ -1,4 +1,9 @@
+Node3D
+CollisionShape3D
+Camera3D
 Node
+TextureRect
+Control
 GridMap
 Timer
 AudioStreamPlayer
@@ -6,9 +11,4 @@ ColorRect
 Sprite2D
 WorldEnvironment
 CanvasModulate
-Control
 SubViewport
-TextureRect
-CanvasLayer
-StaticBody3D
-MeshInstance3D

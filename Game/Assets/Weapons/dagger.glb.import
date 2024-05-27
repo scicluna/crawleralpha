@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c32p4stxstmjj"
-path="res://.godot/imported/TILES.glb-b2154f7f2cd34a491730f8bf23a51d79.scn"
+uid="uid://bm85t2u36rk3h"
+path="res://.godot/imported/dagger.glb-a30acde9ca4c1f5c99f9899b37ab9d8c.scn"
 
 [deps]
 
-source_file="res://Meshes/f1/TILES.glb"
-dest_files=["res://.godot/imported/TILES.glb-b2154f7f2cd34a491730f8bf23a51d79.scn"]
+source_file="res://Assets/Weapons/dagger.glb"
+dest_files=["res://.godot/imported/dagger.glb-a30acde9ca4c1f5c99f9899b37ab9d8c.scn"]
 
 [params]
 

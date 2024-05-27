@@ -11,18 +11,24 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
+@onready var weapon := $Pivot/Camera3D/Weapon
 @onready var movement_abilities: Array[Movement] = []
 
 var dashing = false
+var equipped_weapon: String = ""
 
 func _ready():
 	# Add movement abilities
 	var dash_ability = Dash.new()
 	add_child(dash_ability)
 	movement_abilities.append(dash_ability)
+	
+	# Placeholder Weapon
+	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
+	weapon.load_weapon("dagger")
 
 func _unhandled_input(event: InputEvent) -> void:
-	handle_mouse_input(event)
+	_input(event)
 	for ability in movement_abilities:
 		ability.process_input(self, get_process_delta_time())
 
@@ -35,16 +41,16 @@ func _physics_process(delta):
 	cap_speed()
 	move_and_slide()
 
-func handle_mouse_input(event: InputEvent):
-	if event is InputEventMouseButton:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			neck.rotate_y(-event.relative.x * .01)
-			camera.rotate_x(-event.relative.y * .01)
+			neck.rotate_y(-event.relative.x * 0.01)
+			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func apply_gravity(delta):
@@ -79,3 +85,4 @@ func cap_speed():
 			var speed_ratio = MAX_SPEED / horizontal_speed
 			velocity.x *= speed_ratio
 			velocity.z *= speed_ratio
+

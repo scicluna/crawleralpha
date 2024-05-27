@@ -1,7 +1,7 @@
 res://Test_Room.tscn
 res://Player/Dash/dash.gdshader
-res://Meshes/f1/f1tiles.tres
+res://Assets/Meshes/f1/f1tiles.tres
 res://Player/player.tscn
-res://Player/Dash.gd
+res://Player/Weapons.gd
 res://Player/Player.gd
-res://Player/Movement.gd
+res://Player/Weapon.gd

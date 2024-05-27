@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cra5h5u0q4r6f"]
+[gd_scene load_steps=10 format=3 uid="uid://cra5h5u0q4r6f"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_ee71i"]
 [ext_resource type="Texture2D" uid="uid://cty811f04015i" path="res://Assets/UI/crosshair.webp" id="2_s07q3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Player/Dash.gd" id="4_jbuir"]
 [ext_resource type="Script" path="res://Player/Movement.gd" id="4_ocksf"]
 [ext_resource type="AudioStream" uid="uid://b4ssdi83dj3xl" path="res://Assets/Sound/mixkit-arrow-whoosh-1491.wav" id="4_piykr"]
+[ext_resource type="Script" path="res://Player/Weapon.gd" id="4_qdl40"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1nq4e"]
 height = 1.5
@@ -25,16 +26,23 @@ shape = SubResource("ConvexPolygonShape3D_8hrn1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 536.0
+offset_top = 284.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_s07q3")
@@ -45,9 +53,9 @@ stretch_mode = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159551, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.378886, 0)
 doppler_tracking = 2
 current = true
-fov = 89.5
 
 [node name="Dash_Blur" type="ColorRect" parent="Pivot/Camera3D"]
 material = ExtResource("3_dgd7l")
@@ -57,6 +65,10 @@ anchor_bottom = 1.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Weapon" type="Node3D" parent="Pivot/Camera3D"]
+transform = Transform3D(0.16538, -0.049986, 0.469202, 0.21102, 0.452533, -0.026168, -0.422043, 0.206677, 0.170776, 0.4, -0.3, -0.45)
+script = ExtResource("4_qdl40")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_ocksf")
