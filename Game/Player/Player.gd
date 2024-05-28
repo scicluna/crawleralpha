@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
-@onready var weapon := $Pivot/Camera3D/Weapon
+@onready var weapon_arm := $Pivot/Camera3D/WeaponArm
 @onready var movement_abilities: Array[Movement] = []
 
 var dashing = false
@@ -25,7 +25,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon.load_weapon("dagger")
+	weapon_arm.load_weapon("dagger2", "up")
 
 func _unhandled_input(event: InputEvent) -> void:
 	_input(event)
