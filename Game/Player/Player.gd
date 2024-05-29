@@ -37,7 +37,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("dagger2")
+	weapon_arm.load_weapon("dagger3")
 
 func _unhandled_input(event: InputEvent) -> void:
 	_input(event)
@@ -66,6 +66,21 @@ func _input(event: InputEvent) -> void:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+			
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if weapon_arm.current_weapon:
+			weapon_arm.current_weapon.attack(null)  # Pass in player stats if necessary
+		else:
+			if weapon_arm.current_weapon:
+				weapon_arm.current_weapon.stop()
+			
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			if weapon_arm.current_weapon:
+				weapon_arm.current_weapon.parry()
+		else:
+			if weapon_arm.current_weapon:
+				weapon_arm.current_weapon.stop()
 
 func apply_gravity(delta):
 	if not is_on_floor():

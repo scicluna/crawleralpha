@@ -2,20 +2,29 @@
 extends Node3D
 
 class_name Weapon
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Common properties
 var damage: int = 0
 var attack_speed: float = 0.0
-var weapon_mesh: String = "Path" # Path to the weapon mesh resource
 
-# Called when the node is added to the scene.
 func _ready() -> void:
 	# This method can be overridden by child classes to initialize specific weapon properties
 	pass
 
-# Common methods
 func attack(player_stats) -> void:
-	# Define the base attack behavior
+	if animation_player.has_animation("attack"):
+		animation_player.play("attack")
+	pass
+	
+func parry() -> void:
+	if animation_player.has_animation("parry"):
+		animation_player.play("parry")
+	pass
+	
+func stop() -> void:
+	if animation_player.has_animation("RESET"):
+		animation_player.play("RESET")
 	pass
 
 func equip() -> void:
