@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpapmpis6g0rt"]
+
+[ext_resource type="Script" path="res://Weapons/dagger2.gd" id="1_q5hsg"]
+[ext_resource type="ArrayMesh" uid="uid://cf8jke7vpkokr" path="res://Assets/Weapons/dagger2.obj" id="2_vkrmh"]
+
+[node name="Dagger2" type="Node3D"]
+transform = Transform3D(0.906308, -0.323744, 0.271654, 0, 0.642788, 0.766044, -0.422618, -0.694272, 0.582563, 0.409, -0.281, -0.763301)
+script = ExtResource("1_q5hsg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -2.98023e-08, -1.49012e-08, -2.98023e-08, 1, 0, 1.49012e-08, 0, 1, -0.0178812, -0.029375, 0.0246485)
+mesh = ExtResource("2_vkrmh")

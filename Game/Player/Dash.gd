@@ -2,11 +2,13 @@ extends Movement
 class_name Dash
 
 const DASH_SPEED = 25.0
+const DASH_COOLDOWN = 0.4
 const DASH_DURATION = 0.2
 const DOUBLE_TAP_TIME = 0.2
 
 var dash_time_left = 0.0
 var dash_direction = Vector3.ZERO
+
 var last_tap_times = {
 	"move_forward": 0.0,
 	"move_backward": 0.0,
@@ -40,12 +42,13 @@ func apply_movement(player, delta):
 
 func start_dash(player, direction_key):
 	if dash_cooldown_timer.is_stopped():
-		dash_cooldown_timer.start(DASH_DURATION)
+		reset_dash_timers()
+		dash_cooldown_timer.start(DASH_COOLDOWN)
 		dash_time_left = DASH_DURATION
 		player.dashing = true
 		dash_effect.material.set_shader_parameter("effect_intensity", 1.0)
 		dash_sound.play()
-		reset_dash_timers()
+
 
 		match direction_key:
 			"move_forward":

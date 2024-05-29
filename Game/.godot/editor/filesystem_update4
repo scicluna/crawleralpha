@@ -1,4 +1,14 @@
-res://Test_Room.tscn
+res://Player/player.tscn
 res://Player/Dash/dash.gdshader
 res://Assets/Meshes/f1/f1tiles.tres
-res://Player/player.tscn
+res://Player/Player.gd
+res://Test_Room.tscn
+res://Player/Dash.gd
+res://Player/Weapons.gd
+res://Player/dagger2.gd
+res://Player/Weapon.gd
+res://Weapons/dagger2.tscn
+res://Weapons/dagger2.gd
+res://Weapons/Daggers/dagger2.tscn
+res://Weapons/Weapons.gd
+res://Weapons/Daggers/dagger2.gd
