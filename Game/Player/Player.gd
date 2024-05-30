@@ -1,11 +1,23 @@
 extends CharacterBody3D
 
+#speed consts
 const MAX_SPEED = 10.0
 const BACKPEDAL_SPEED = 3.0
 const ACCELERATION = 20.0
 const DECELERATION = 25.0
+
+#jump consts
 const AIR_DECELERATION = 10.0
 const JUMP_VELOCITY = 4.5
+
+#headbob consts
+const BOB_FREQ = 1.5
+const BOB_AMP = 0.05
+var t_bob = 0.0
+
+#fov consts
+const BASE_FOV = 75
+const FOV_CHANGE = .5
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -25,7 +37,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("dagger2", "up")
+	weapon_arm.load_weapon("dagger3")
 
 func _unhandled_input(event: InputEvent) -> void:
 	_input(event)
@@ -39,6 +51,8 @@ func _physics_process(delta):
 	handle_jump()
 	handle_movement(delta)
 	cap_speed()
+	head_bob(delta)
+	fov_change(delta)
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -52,6 +66,21 @@ func _input(event: InputEvent) -> void:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+			
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if weapon_arm.current_weapon:
+			weapon_arm.current_weapon.attack(null)  # Pass in player stats if necessary
+		else:
+			if weapon_arm.current_weapon:
+				weapon_arm.current_weapon.stop()
+			
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			if weapon_arm.current_weapon:
+				weapon_arm.current_weapon.parry()
+		else:
+			if weapon_arm.current_weapon:
+				weapon_arm.current_weapon.stop()
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -86,3 +115,16 @@ func cap_speed():
 			velocity.x *= speed_ratio
 			velocity.z *= speed_ratio
 
+func head_bob(delta) -> void:
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	
+	var pos = Vector3.ZERO
+	pos.y = sin(t_bob * BOB_FREQ) * BOB_AMP
+	pos.x = cos(t_bob * BOB_FREQ / 2) * BOB_AMP
+	
+	camera.transform.origin = pos
+
+func fov_change(delta) -> void:
+	var velocity_clamped = clamp(velocity.length(), 0.5, MAX_SPEED * 2)
+	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+	camera.fov = lerp(camera.fov, target_fov, delta * 5.0)

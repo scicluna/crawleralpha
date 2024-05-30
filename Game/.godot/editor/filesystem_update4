@@ -2,3 +2,8 @@ res://Test_Room.tscn
 res://Player/Dash/dash.gdshader
 res://Assets/Meshes/f1/f1tiles.tres
 res://Player/player.tscn
+res://Weapons/dagger2.tscn
+res://Weapons/Weapons.gd
+res://Player/Player.gd
+res://Weapons/dagger3.tscn
+res://Weapons/dagger3.gd

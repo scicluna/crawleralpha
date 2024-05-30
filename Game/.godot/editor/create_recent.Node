@@ -1,9 +1,10 @@
-OmniLight3D
+AnimationPlayer
 MeshInstance3D
 Node3D
+Node
+OmniLight3D
 CollisionShape3D
 Camera3D
-Node
 TextureRect
 Control
 GridMap
@@ -11,5 +12,3 @@ Timer
 AudioStreamPlayer
 ColorRect
 Sprite2D
-WorldEnvironment
-CanvasModulate

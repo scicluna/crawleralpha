@@ -67,11 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="WeaponArm" type="Node3D" parent="Pivot/Camera3D"]
-transform = Transform3D(0.410776, -0.264185, 0.107096, -0.00715827, 0.178225, 0.467102, -0.284978, -0.385282, 0.142639, 0.3, -0.300437, -0.75)
 script = ExtResource("4_qdl40")
-
-[node name="Weapon" type="MeshInstance3D" parent="Pivot/Camera3D/WeaponArm"]
-transform = Transform3D(1.5, 4.47035e-07, 1.11759e-07, -4.47035e-07, 1.5, 8.9407e-08, -1.11759e-07, -8.9407e-08, 1.5, -0.1614, -0.274061, 0.102096)
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_ocksf")
