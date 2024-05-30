@@ -1,11 +1,11 @@
-res://Mobs/Dummy.tscn
 res://Player/Dash/dash.gdshader
 res://Assets/Meshes/f1/f1tiles.tres
+res://UI/DamageNumbers.tscn
+res://UI/DamageNumbers.gd
+res://Mobs/Mob.gd
+res://Mobs/Dummy.tscn
 res://Weapons/dagger2.tscn
 res://Test_Room.tscn
 res://Player/player.tscn
-res://Weapons/Weapon.gd
-res://Player/HitBox.gd
-res://Player/Player.gd
 res://Weapons/dagger3.tscn
-res://Player/WeaponArm.gd
+res://Player/CrosshairRay.gd

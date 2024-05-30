@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://e3d24g25g7gp"]
 
-[ext_resource type="Texture2D" uid="uid://cun7as6m8aeff" path="res://Assets/Sprites/dummy.tres" id="1_4cwq7"]
+[ext_resource type="Texture2D" uid="uid://ccxb7p58j1phx" path="res://Assets/Sprites/cross.tres" id="1_t7eyy"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4cwq7")
+"texture": ExtResource("1_t7eyy")
 }],
 "loop": true,
 "name": &"default",

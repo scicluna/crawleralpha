@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cra5h5u0q4r6f"]
+[gd_scene load_steps=12 format=3 uid="uid://cra5h5u0q4r6f"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_ee71i"]
-[ext_resource type="Texture2D" uid="uid://cty811f04015i" path="res://Assets/UI/crosshair.webp" id="2_s07q3"]
 [ext_resource type="Material" uid="uid://dwb6fbitn8v2b" path="res://Player/Dash/dash.tres" id="3_dgd7l"]
 [ext_resource type="Script" path="res://Player/Dash.gd" id="4_jbuir"]
 [ext_resource type="Script" path="res://Player/Movement.gd" id="4_ocksf"]
 [ext_resource type="AudioStream" uid="uid://b4ssdi83dj3xl" path="res://Assets/Sound/mixkit-arrow-whoosh-1491.wav" id="4_piykr"]
 [ext_resource type="Script" path="res://Player/WeaponArm.gd" id="4_qdl40"]
 [ext_resource type="Script" path="res://Player/HitBox.gd" id="5_jscid"]
+[ext_resource type="Texture2D" uid="uid://ccxb7p58j1phx" path="res://Assets/Sprites/cross.tres" id="5_rr5h3"]
+[ext_resource type="Script" path="res://Player/CrosshairRay.gd" id="6_ntukd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1nq4e"]
 height = 1.5
@@ -26,31 +27,6 @@ mesh = SubResource("CapsuleMesh_1nq4e")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_t6cgf")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 536.0
-offset_top = 284.0
-offset_right = 576.0
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_s07q3")
-expand_mode = 2
-stretch_mode = 5
-
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159551, 0)
 
@@ -64,7 +40,6 @@ material = ExtResource("3_dgd7l")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -74,6 +49,35 @@ script = ExtResource("4_qdl40")
 [node name="HitBox" type="RayCast3D" parent="Pivot/Camera3D/WeaponArm"]
 target_position = Vector3(0, 0, 0)
 script = ExtResource("5_jscid")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Pivot/Camera3D"]
+
+[node name="Control" type="Control" parent="Pivot/Camera3D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Crosshair" type="TextureRect" parent="Pivot/Camera3D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 536.0
+offset_top = 284.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rr5h3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CrosshairRay" type="RayCast3D" parent="Pivot/Camera3D"]
+target_position = Vector3(0, 0, -20)
+script = ExtResource("6_ntukd")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_ocksf")
