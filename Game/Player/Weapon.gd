@@ -1,4 +1,3 @@
-# res://Player/WeaponArm.gd
 extends Node3D
 
 var current_weapon: Weapon = null  # Reference to the current weapon

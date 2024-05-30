@@ -3,6 +3,33 @@
 [ext_resource type="Script" path="res://Weapons/dagger3.gd" id="1_4crhu"]
 [ext_resource type="ArrayMesh" uid="uid://b14qwrfbxa7sc" path="res://Assets/Weapons/dagger3.obj" id="2_5w0f6"]
 
+[sub_resource type="Animation" id="Animation_u7fjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, -0.25, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.44346, 0.436332, 0.523599)]
+}
+
 [sub_resource type="Animation" id="Animation_bj03l"]
 resource_name = "attack"
 length = 1.5
@@ -29,33 +56,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(2.44346, 0.436332, 0.523599), Vector3(2.0944, 0.349066, 0.523599), Vector3(2.26893, 0.872665, 0.523599), Vector3(2.44346, 0.436332, 0.523599)]
-}
-
-[sub_resource type="Animation" id="Animation_u7fjd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.5, -0.25, -0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.44346, 0.436332, 0.523599)]
 }
 
 [sub_resource type="Animation" id="Animation_2lbaw"]
@@ -93,7 +93,7 @@ _data = {
 }
 
 [node name="Dagger3" type="Node3D"]
-transform = Transform3D(0.920712, -0.217895, -0.323744, -0.383022, -0.663414, -0.642787, -0.0747164, 0.715824, -0.694272, 0.5, -0.25, -0.5)
+transform = Transform3D(0.920712, -0.217895, -0.323744, -0.383022, -0.663413, -0.642788, -0.0747156, 0.715824, -0.694271, 0.5, -0.25, -0.5)
 script = ExtResource("1_4crhu")
 metadata/_edit_group_ = true
 
@@ -106,3 +106,8 @@ libraries = {
 "": SubResource("AnimationLibrary_mknc4")
 }
 speed_scale = 5.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+target_position = Vector3(0, 0, 0)
+hit_from_inside = true

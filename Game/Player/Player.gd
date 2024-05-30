@@ -68,11 +68,12 @@ func _input(event: InputEvent) -> void:
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 			
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if weapon_arm.current_weapon:
-			weapon_arm.current_weapon.attack(null)  # Pass in player stats if necessary
-		else:
+		if event.pressed:
 			if weapon_arm.current_weapon:
-				weapon_arm.current_weapon.stop()
+				weapon_arm.current_weapon.attack(null)  # Pass in player stats if necessary
+			else:
+				if weapon_arm.current_weapon:
+					weapon_arm.current_weapon.stop()
 			
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.pressed:
