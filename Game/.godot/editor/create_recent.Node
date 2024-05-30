@@ -1,14 +1,14 @@
 RayCast3D
+CollisionShape3D
+CharacterBody3D
+Sprite3D
 AnimationPlayer
 MeshInstance3D
 Node3D
 Node
 OmniLight3D
-CollisionShape3D
 Camera3D
 TextureRect
 Control
 GridMap
 Timer
-AudioStreamPlayer
-ColorRect

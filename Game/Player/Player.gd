@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
 #speed consts
-const MAX_SPEED = 10.0
+const MAX_SPEED = 8.0
 const BACKPEDAL_SPEED = 3.0
 const ACCELERATION = 20.0
-const DECELERATION = 25.0
+const DECELERATION = 30.0
+const gravity = 12.50
 
 #jump consts
 const AIR_DECELERATION = 10.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6
 
 #headbob consts
 const BOB_FREQ = 1.5
@@ -19,11 +20,10 @@ var t_bob = 0.0
 const BASE_FOV = 75
 const FOV_CHANGE = .5
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
 @onready var weapon_arm := $Pivot/Camera3D/WeaponArm
+@onready var hit_box := $Pivot/Camera3D/WeaponArm/HitBox
 @onready var movement_abilities: Array[Movement] = []
 
 var dashing = false
