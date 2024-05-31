@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Basic Player/Tutorial.md",
+                "file": "Inventory/Inventory General Plan.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Basic Player/Tutorial.md",
+                "file": "Inventory/Inventory General Plan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Basic Player/Tutorial.md",
+                "file": "Inventory/Inventory General Plan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Basic Player/Tutorial.md"
+                "file": "Inventory/Inventory General Plan.md"
               }
             }
           }
@@ -148,13 +148,15 @@
   },
   "active": "21139de26faff18c",
   "lastOpenFiles": [
-    "Basic Player/Plan.md",
+    "Big Plans/1 Premise.md",
+    "Inventory/Inventory General Plan.md",
+    "Inventory",
     "Basic Player/Tutorial.md",
+    "Basic Player/Plan.md",
     "Todo (MVP).md",
     "Basic Environment/Tutorial.md",
     "Basic Player",
     "Basic Environment/Plan.md",
-    "Big Plans/1 Premise.md",
     "Big Plans",
     "Basic Environment",
     "Welcome.md"
