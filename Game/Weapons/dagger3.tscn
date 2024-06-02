@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgspam1yb2s3k"]
+[gd_scene load_steps=6 format=3 uid="uid://dgspam1yb2s3k"]
 
-[ext_resource type="Script" path="res://Weapons/dagger3.gd" id="1_4crhu"]
 [ext_resource type="ArrayMesh" uid="uid://b14qwrfbxa7sc" path="res://Assets/Weapons/dagger3.obj" id="2_5w0f6"]
 
 [sub_resource type="Animation" id="Animation_u7fjd"]
@@ -94,7 +93,6 @@ _data = {
 
 [node name="Dagger3" type="Node3D"]
 transform = Transform3D(0.920712, -0.217895, -0.323744, -0.383022, -0.663413, -0.642788, -0.0747156, 0.715824, -0.694271, 0.5, -0.25, -0.5)
-script = ExtResource("1_4crhu")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

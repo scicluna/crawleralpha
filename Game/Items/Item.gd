@@ -1,10 +1,15 @@
-extends Node
+extends Node3D
 class_name Item
 
 @export var item_data: ItemData
 
 func _ready() -> void:
 	print("Item: %s" % item_data.name)
+	
+	# Instance the 3D model and add it as a child
+	if item_data.model:
+		var model_instance = item_data.model.instance()
+		add_child(model_instance)
 
 func apply_stat_changes(character: Node) -> void:
 	for stat in item_data.stat_changes.keys():

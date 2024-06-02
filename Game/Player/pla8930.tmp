@@ -47,6 +47,10 @@ metadata/_edit_use_anchors_ = true
 [node name="WeaponArm" type="Node3D" parent="Pivot/Camera3D"]
 script = ExtResource("4_qdl40")
 
+[node name="HitBox" type="RayCast3D" parent="Pivot/Camera3D/WeaponArm"]
+target_position = Vector3(0, 0, 0)
+script = ExtResource("5_jscid")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Pivot/Camera3D"]
 
 [node name="Control" type="Control" parent="Pivot/Camera3D/CanvasLayer"]
@@ -75,9 +79,6 @@ stretch_mode = 5
 [node name="CrosshairRay" type="RayCast3D" parent="Pivot/Camera3D"]
 target_position = Vector3(0, 0, -20)
 script = ExtResource("6_ntukd")
-
-[node name="HitBox" type="RayCast3D" parent="Pivot/Camera3D"]
-script = ExtResource("5_jscid")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_ocksf")

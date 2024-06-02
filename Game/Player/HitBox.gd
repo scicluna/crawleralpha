@@ -6,11 +6,12 @@ func _ready():
 	pass # Replace with function body.
 
 func update_range(range: float) -> void:
-		self.set_target_position(Vector3(0, 0, -range))
+	set_target_position(Vector3(0, 0, -range))
 
 func check_hit(damage) -> void:
-	if self.is_colliding():
-		var collider = self.get_collider()
+	force_raycast_update()
+	if is_colliding():
+		var collider = get_collider()
 		if collider:
 			# Apply damage or other effects to the collider
 			print("Hit: %s" % collider.name)

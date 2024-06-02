@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbtb743bryt8m"]
+
+[ext_resource type="ArrayMesh" uid="uid://cf8jke7vpkokr" path="res://Assets/Weapons/dagger2.obj" id="1_5pbi8"]
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_mg071"]
+
+[sub_resource type="Animation" id="Animation_18bee"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.153905, -0.0612991, -0.441486)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ie7oc"]
+resource_name = "attack"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.153905, -0.0612991, -0.441486), Vector3(0.153905, -0.0984235, -0.590377), Vector3(0.153905, -0.0665988, -0.733532), Vector3(0.153905, -0.0665988, -0.740093), Vector3(0.153905, -0.0612991, -0.441486)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(-1.2436, 0, 0), Vector3(-1.25624, 0, 0), Vector3(-1.28392, 0, 0), Vector3(-0.523599, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghdx5"]
+_data = {
+"RESET": SubResource("Animation_18bee"),
+"attack": SubResource("Animation_ie7oc")
+}
+
+[node name="dagger1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153905, -0.0612991, -0.441486)
+script = ExtResource("1_mg071")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_5pbi8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ghdx5")
+}
+speed_scale = 2.0
