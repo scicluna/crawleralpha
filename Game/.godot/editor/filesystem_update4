@@ -1,9 +1,9 @@
-res://Test_Room.tscn
+res://UI/DamageNumbers.tscn
 res://Player/Dash/dash.gdshader
 res://Assets/Meshes/f1/f1tiles.tres
-res://Torch.gd
+res://Items/Weapons/dagger1.tres
 res://Mobs/Dummy.tscn
 res://Weapons/dagger2.tscn
+res://Test_Room.tscn
 res://Player/player.tscn
 res://Weapons/dagger3.tscn
-res://UI/DamageNumbers.tscn

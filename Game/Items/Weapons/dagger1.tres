@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://j58tlni2dnea"]
+
+[ext_resource type="Script" path="res://Items/WeaponData.gd" id="1_cyxgx"]
+[ext_resource type="Texture2D" uid="uid://c0u5ujh7kspnv" path="res://Assets/Weapons/SubObjects/dagger_dagger.png" id="1_lx7bh"]
+
+[resource]
+script = ExtResource("1_cyxgx")
+damage = 3
+attack_speed = 0.5
+range = 2.0
+name = "Dagger"
+description = "Woah! A normal Dagger!"
+icon = ExtResource("1_lx7bh")
+item_type = 0

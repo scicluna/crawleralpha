@@ -1,3 +1,4 @@
+WeaponData
 SpriteFrames
 ShaderMaterial
 Shader
