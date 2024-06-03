@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbtb743bryt8m"]
+[gd_scene load_steps=7 format=3 uid="uid://cbtb743bryt8m"]
 
-[ext_resource type="ArrayMesh" uid="uid://cf8jke7vpkokr" path="res://Assets/Weapons/dagger2.obj" id="1_5pbi8"]
-[ext_resource type="Script" path="res://Assets/Weapon.gd" id="1_mg071"]
+[ext_resource type="Script" path="res://Items/Weapons/Weapon.gd" id="1_mg071"]
+[ext_resource type="ArrayMesh" uid="uid://dewdyvdwj863l" path="res://Items/Weapons/Textures/29ca39c390fe_Pixel_style_dagger_.obj" id="2_yj4lb"]
 
 [sub_resource type="Animation" id="Animation_18bee"]
 length = 0.001
@@ -9,25 +9,25 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.153905, -0.0612991, -0.441486)]
+"values": [Vector3(0.399892, -0.0972339, -0.621426)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.261164, -0.993248, 0.339965)]
 }
 
 [sub_resource type="Animation" id="Animation_ie7oc"]
@@ -37,43 +37,72 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.153905, -0.0612991, -0.441486), Vector3(0.153905, -0.0984235, -0.590377), Vector3(0.153905, -0.0665988, -0.733532), Vector3(0.153905, -0.0665988, -0.740093), Vector3(0.153905, -0.0612991, -0.441486)]
+"values": [Vector3(0.399892, -0.206568, -0.621426), Vector3(0.270814, -0.206568, -1.18792)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.523599, 0, 0), Vector3(-1.2436, 0, 0), Vector3(-1.25624, 0, 0), Vector3(-1.28392, 0, 0), Vector3(-0.523599, 0, 0)]
+"values": [Vector3(-0.261164, -0.993248, 0.339965), Vector3(-0.319011, -1.45314, 1.62459)]
+}
+
+[sub_resource type="Animation" id="Animation_wr0sy"]
+resource_name = "parry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.399892, -0.206568, -0.621426), Vector3(0.234027, -0.108352, -0.465055)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.261164, -0.993248, 0.339965), Vector3(0.148013, -0.675218, 1.44974)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghdx5"]
 _data = {
 "RESET": SubResource("Animation_18bee"),
-"attack": SubResource("Animation_ie7oc")
+"attack": SubResource("Animation_ie7oc"),
+"parry": SubResource("Animation_wr0sy")
 }
 
 [node name="dagger1" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153905, -0.0612991, -0.441486)
+transform = Transform3D(0.586858, 0.0218878, -0.809394, 0.322147, 0.910797, 0.258205, 0.742845, -0.412274, 0.527458, 0.399892, -0.0972339, -0.621426)
 script = ExtResource("1_mg071")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_5pbi8")
+mesh = ExtResource("2_yj4lb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ghdx5")
 }
-speed_scale = 2.0
+playback_default_blend_time = 0.05
+speed_scale = 4.0
