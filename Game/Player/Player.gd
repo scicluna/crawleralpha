@@ -43,7 +43,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger2.tres")
+	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger3.tres")
 
 func _unhandled_input(event: InputEvent) -> void:
 	_input(event)

@@ -1,8 +1,8 @@
-Node3D
-Movement
+MeshInstance3D
 Weapon
 AnimationPlayer
-MeshInstance3D
+Node3D
+Movement
 Camera3D
 CharacterBody3D
 CollisionShape3D

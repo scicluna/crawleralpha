@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://j58tlni2dnea"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://j58tlni2dnea"]
 
 [ext_resource type="Script" path="res://Items/WeaponData.gd" id="1_cyxgx"]
 [ext_resource type="PackedScene" uid="uid://cbtb743bryt8m" path="res://Items/Weapons/Scenes/dagger_1.tscn" id="2_ner4o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5ro8i"]
 
 [resource]
 script = ExtResource("1_cyxgx")
@@ -10,5 +12,6 @@ attack_speed = 0.2
 range = 3.1
 name = "Dagger"
 description = "Woah! A normal Dagger!"
+icon = SubResource("PlaceholderTexture2D_5ro8i")
 model = ExtResource("2_ner4o")
 item_type = 0

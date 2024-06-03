@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://drsxjhpecvlvs"]
+
+[ext_resource type="Script" path="res://Items/WeaponData.gd" id="1_6ejof"]
+[ext_resource type="Texture2D" uid="uid://c1t8nrqe3frji" path="res://Items/Weapons/Textures/dagger3/dagger3_dagger3.png" id="1_ak1la"]
+[ext_resource type="PackedScene" uid="uid://c545relsxj3kb" path="res://Items/Weapons/Scenes/dagger_3.tscn" id="2_s270i"]
+
+[resource]
+script = ExtResource("1_6ejof")
+damage = 5
+attack_speed = 0.15
+range = 2.5
+name = "dagger3"
+description = "Voxel Attempt	"
+icon = ExtResource("1_ak1la")
+model = ExtResource("2_s270i")
+item_type = 0

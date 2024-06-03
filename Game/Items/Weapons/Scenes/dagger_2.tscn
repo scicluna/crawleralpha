@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.399089, -0.0945836, -0.610856)]
+"values": [Vector3(0.266, -0.25, -0.37)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.443199, -0.951483, 0.22311)]
+"values": [Vector3(0.188947, -1.22465, 0.228983)]
 }
 
 [sub_resource type="Animation" id="Animation_ie7oc"]
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.399089, -0.0945836, -0.610856), Vector3(0.310168, -0.0945836, -1.38051)]
+"values": [Vector3(0.266, -0.25, -0.37), Vector3(0.181, -0.0689367, -1.11)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -52,14 +52,15 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.443199, -0.951483, 0.22311), Vector3(-0.633523, -1.9917, 1.89979)]
+"values": [Vector3(0.188947, -1.22465, 0.228983), Vector3(-1.42219, 0.554031, -0.364495), Vector3(-1.42219, 0.554031, -0.364495)]
 }
 
 [sub_resource type="Animation" id="Animation_wr0sy"]
 resource_name = "parry"
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,10 +68,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.399089, -0.0945836, -0.610856), Vector3(0.168114, -0.0837826, -0.492984)]
+"values": [Vector3(0.266, -0.25, -0.37), Vector3(0.232439, -0.25, -0.37), Vector3(0.199646, -0.0995332, -0.414075)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -79,10 +80,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.443199, -0.951483, 0.22311), Vector3(0.329631, -0.983357, 0.732076)]
+"values": [Vector3(0.188947, -1.22465, 0.228983), Vector3(1.03263, -0.863027, 0.794989), Vector3(1.03263, -0.863027, 0.794989)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghdx5"]
@@ -93,7 +94,7 @@ _data = {
 }
 
 [node name="dagger2" type="Node3D"]
-transform = Transform3D(0.643351, 0.212095, -0.735605, 0.199886, 0.880993, 0.428832, 0.739015, -0.422927, 0.524393, 0.399089, -0.0945836, -0.610856)
+transform = Transform3D(0.290313, -0.249083, -0.923945, 0.222947, 0.956565, -0.187824, 0.930597, -0.151463, 0.333236, 0.266, -0.25, -0.37)
 script = ExtResource("1_uveal")
 metadata/_edit_group_ = true
 

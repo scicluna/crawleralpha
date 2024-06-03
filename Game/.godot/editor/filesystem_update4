@@ -1,10 +1,5 @@
-res://Test_Room.tscn
-res://Assets/Meshes/f1/f1tiles.tres
-res://Movement/Techniques/Resources/dash.gdshader
 res://Items/Weapons/Scenes/dagger_2.tscn
-res://Items/Weapons/Resources/dagger2.tres
-res://Items/Weapons/Weapon.gd
-res://Player/player.tscn
-res://Player/Player.gd
+res://Movement/Techniques/Resources/dash.gdshader
 res://Items/Weapons/Scenes/dagger_1.tscn
-res://Items/Weapons/Resources/dagger1.tres
+res://Player/player.tscn
+res://Items/Weapons/Scenes/dagger_3.tscn
