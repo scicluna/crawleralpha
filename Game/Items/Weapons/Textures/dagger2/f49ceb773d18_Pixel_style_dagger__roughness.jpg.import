@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bke0hqcuyxwas"
-path.s3tc="res://.godot/imported/29ca39c390fe_Pixel_style_dagger__texture_kd.jpg-2df5be8e5e2709d2e3dbbad97dc77cb6.s3tc.ctex"
+uid="uid://cdpfpvk2qrkla"
+path.s3tc="res://.godot/imported/f49ceb773d18_Pixel_style_dagger__roughness.jpg-b30ed725c2b89497bfbf3c6b5732fa46.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Items/Weapons/Textures/TextureAssets/29ca39c390fe_Pixel_style_dagger__texture_kd.jpg"
-dest_files=["res://.godot/imported/29ca39c390fe_Pixel_style_dagger__texture_kd.jpg-2df5be8e5e2709d2e3dbbad97dc77cb6.s3tc.ctex"]
+source_file="res://Items/Weapons/Textures/dagger2/f49ceb773d18_Pixel_style_dagger__roughness.jpg"
+dest_files=["res://.godot/imported/f49ceb773d18_Pixel_style_dagger__roughness.jpg-b30ed725c2b89497bfbf3c6b5732fa46.s3tc.ctex"]
 
 [params]
 

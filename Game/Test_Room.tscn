@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dr61otgqyar53" path="res://Mobs/Scenes/Dummy.tscn" id="1_kgo3g"]
 [ext_resource type="PackedScene" uid="uid://cra5h5u0q4r6f" path="res://Player/player.tscn" id="1_p4vjc"]
-[ext_resource type="PackedScene" uid="uid://dtijylheu13kf" path="res://Lighting/torch.tscn" id="2_awuyx"]
+[ext_resource type="PackedScene" uid="uid://dtijylheu13kf" path="res://Lighting/Scenes/torch.tscn" id="2_awuyx"]
 [ext_resource type="MeshLibrary" uid="uid://cm1s5t1sa6bqi" path="res://Assets/Meshes/f1/f1tiles.tres" id="2_lcuaj"]
 
 [node name="Test_Room" type="Node3D"]

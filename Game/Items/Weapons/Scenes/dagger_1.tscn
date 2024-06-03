@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbtb743bryt8m"]
 
 [ext_resource type="Script" path="res://Items/Weapons/Weapon.gd" id="1_mg071"]
-[ext_resource type="ArrayMesh" uid="uid://dewdyvdwj863l" path="res://Items/Weapons/Textures/29ca39c390fe_Pixel_style_dagger_.obj" id="2_yj4lb"]
+[ext_resource type="ArrayMesh" uid="uid://dfypm4bcfkr84" path="res://Items/Weapons/Textures/dagger1/dagger1.obj" id="2_acct2"]
 
 [sub_resource type="Animation" id="Animation_18bee"]
 length = 0.001
@@ -93,12 +93,12 @@ _data = {
 }
 
 [node name="dagger1" type="Node3D"]
-transform = Transform3D(0.586858, 0.0218878, -0.809394, 0.322147, 0.910797, 0.258205, 0.742845, -0.412274, 0.527458, 0.399892, -0.0972339, -0.621426)
+transform = Transform3D(0.586858, 0.0218878, -0.809394, 0.322147, 0.910797, 0.258205, 0.742845, -0.412273, 0.527458, 0.399892, -0.0972339, -0.621426)
 script = ExtResource("1_mg071")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_yj4lb")
+mesh = ExtResource("2_acct2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

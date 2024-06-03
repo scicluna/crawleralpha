@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://swl15gv8h5rm"]
+
+[ext_resource type="PackedScene" uid="uid://jsma28k7xbvt" path="res://Items/Weapons/Scenes/dagger_2.tscn" id="1_0t5yc"]
+[ext_resource type="Script" path="res://Items/WeaponData.gd" id="1_6dog3"]
+
+[resource]
+script = ExtResource("1_6dog3")
+damage = 5
+attack_speed = 0.2
+range = 2.0
+name = "dagger 2"
+description = "wow"
+model = ExtResource("1_0t5yc")
+item_type = 0

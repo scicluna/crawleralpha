@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://jsma28k7xbvt"]
+
+[ext_resource type="Script" path="res://Items/Weapons/Weapon.gd" id="1_uveal"]
+[ext_resource type="ArrayMesh" uid="uid://ds60fw0bg25vg" path="res://Items/Weapons/Textures/dagger2/dagger2.obj" id="2_u1clg"]
+
+[sub_resource type="Animation" id="Animation_18bee"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.399089, -0.0945836, -0.610856)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.443199, -0.951483, 0.22311)]
+}
+
+[sub_resource type="Animation" id="Animation_ie7oc"]
+resource_name = "attack"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.399089, -0.0945836, -0.610856), Vector3(0.310168, -0.0945836, -1.38051)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.443199, -0.951483, 0.22311), Vector3(-0.633523, -1.9917, 1.89979)]
+}
+
+[sub_resource type="Animation" id="Animation_wr0sy"]
+resource_name = "parry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.399089, -0.0945836, -0.610856), Vector3(0.168114, -0.0837826, -0.492984)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.443199, -0.951483, 0.22311), Vector3(0.329631, -0.983357, 0.732076)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghdx5"]
+_data = {
+"RESET": SubResource("Animation_18bee"),
+"attack": SubResource("Animation_ie7oc"),
+"parry": SubResource("Animation_wr0sy")
+}
+
+[node name="dagger2" type="Node3D"]
+transform = Transform3D(0.643351, 0.212095, -0.735605, 0.199886, 0.880993, 0.428832, 0.739015, -0.422927, 0.524393, 0.399089, -0.0945836, -0.610856)
+script = ExtResource("1_uveal")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.255729, -0.00105909, 0.966748, 0.737517, 0.646321, 0.1958, -0.625037, 0.763065, -0.164502, -0.0402144, -0.129262, -0.191713)
+mesh = ExtResource("2_u1clg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ghdx5")
+}
+playback_default_blend_time = 0.05
+speed_scale = 4.0

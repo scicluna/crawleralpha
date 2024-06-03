@@ -1,10 +1,10 @@
-res://Items/Weapons/Scenes/dagger_1.tscn
+res://Test_Room.tscn
 res://Assets/Meshes/f1/f1tiles.tres
 res://Movement/Techniques/Resources/dash.gdshader
-res://Mobs/Scenes/Dummy.tscn
-res://Items/Weapons/Scenes/dagger2.tscn
-res://Test_Room.tscn
+res://Items/Weapons/Scenes/dagger_2.tscn
+res://Items/Weapons/Resources/dagger2.tres
+res://Items/Weapons/Weapon.gd
 res://Player/player.tscn
-res://Movement/Techniques/Dash.tscn
-res://UI/DamageNumbers.tscn
+res://Player/Player.gd
+res://Items/Weapons/Scenes/dagger_1.tscn
 res://Items/Weapons/Resources/dagger1.tres

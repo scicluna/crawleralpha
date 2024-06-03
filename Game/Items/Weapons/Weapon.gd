@@ -3,7 +3,7 @@ class_name Weapon
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-# Item data reference
+# Item data reference"mesh"
 var item_data: WeaponData
 
 var cooldown_timer: Timer = null
