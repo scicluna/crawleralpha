@@ -6,6 +6,7 @@
 billboard = 1
 fixed_size = true
 texture_filter = 0
+render_priority = 1
 text = "500"
 font_size = 40
 uppercase = true

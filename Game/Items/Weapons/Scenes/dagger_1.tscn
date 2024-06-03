@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbtb743bryt8m"]
 
 [ext_resource type="ArrayMesh" uid="uid://cf8jke7vpkokr" path="res://Assets/Weapons/dagger2.obj" id="1_5pbi8"]
-[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_mg071"]
+[ext_resource type="Script" path="res://Assets/Weapon.gd" id="1_mg071"]
 
 [sub_resource type="Animation" id="Animation_18bee"]
 length = 0.001

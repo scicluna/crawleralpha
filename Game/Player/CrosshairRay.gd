@@ -1,7 +1,7 @@
 extends RayCast3D
 signal mob_detected(is_detected: bool)
 
-@onready var cross_hair := $"../CanvasLayer/Control/Crosshair"
+@onready var cross_hair := $"../../UI/Control/Crosshair"
 const DEFAULT_COLOR: Color = Color(1,1,1,1)
 const HOVER_COLOR: Color = "RED"
 

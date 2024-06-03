@@ -1,7 +1,8 @@
+Node3D
+Movement
 Weapon
 AnimationPlayer
 MeshInstance3D
-Node3D
 Camera3D
 CharacterBody3D
 CollisionShape3D
@@ -11,4 +12,3 @@ Label3D
 Label
 RayCast3D
 Sprite3D
-Node

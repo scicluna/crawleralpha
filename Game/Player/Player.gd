@@ -23,7 +23,7 @@ const FOV_CHANGE = .5
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
 @onready var weapon_arm := $Pivot/Camera3D/WeaponArm
-@onready var hit_box := $Pivot/Camera3D/HitBox
+@onready var hit_box := $Pivot/Camera3D/WeaponArm/HitBox
 @onready var movement_abilities: Array[Movement] = []
 
 var dashing = false
@@ -31,13 +31,19 @@ var equipped_weapon: String = ""
 
 func _ready():
 	# Add movement abilities
-	var dash_ability = Dash.new()
+	var dash_ability = load("res://Movement/Techniques/Dash.tscn")
+	
+	if dash_ability:
+		dash_ability = dash_ability.instantiate()
+	else:
+		print("Failed to load dash ability")
+	
 	add_child(dash_ability)
 	movement_abilities.append(dash_ability)
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("res://Items/Weapons/dagger1.tres")
+	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger1.tres")
 
 func _unhandled_input(event: InputEvent) -> void:
 	_input(event)

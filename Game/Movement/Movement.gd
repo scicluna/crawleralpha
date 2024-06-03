@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name Movement
 
 func process_input(player, delta):

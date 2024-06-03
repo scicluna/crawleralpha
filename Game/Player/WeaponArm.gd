@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var hit_box := $"../HitBox"
+@onready var hit_box := $HitBox
 
 var current_weapon: Weapon = null  # Reference to the current weapon
 

@@ -16,10 +16,10 @@ var last_tap_times = {
 	"strafe_right": 0.0
 }
 
-@onready var dash_timer = $"/root/Test_Room/Player/Movement/Dash/DashTimer"
-@onready var dash_cooldown_timer = $"/root/Test_Room/Player/Movement/Dash/DashCooldown"
-@onready var dash_effect = $"/root/Test_Room/Player/Pivot/Camera3D/Dash_Blur"
-@onready var dash_sound = $"/root/Test_Room/Player/Movement/Dash/DashSound"
+@onready var dash_timer = $DashTimer
+@onready var dash_cooldown_timer = $DashCooldown
+@onready var dash_effect = $Dash_Blur
+@onready var dash_sound = $DashSound
 
 func _ready():
 	dash_timer.connect("timeout", Callable(self, "_on_DashTimer_timeout"))
@@ -48,8 +48,7 @@ func start_dash(player, direction_key):
 		player.dashing = true
 		dash_effect.material.set_shader_parameter("effect_intensity", 1.0)
 		dash_sound.play()
-
-
+		
 		match direction_key:
 			"move_forward":
 				dash_direction = player.neck.transform.basis.z.normalized() * -1

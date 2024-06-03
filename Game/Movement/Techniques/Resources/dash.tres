@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwb6fbitn8v2b"]
 
-[ext_resource type="Shader" path="res://Player/Dash/dash.gdshader" id="1_4dh7g"]
+[ext_resource type="Shader" path="res://Movement/Techniques/Resources/dash.gdshader" id="1_4dh7g"]
 
 [resource]
 shader = ExtResource("1_4dh7g")

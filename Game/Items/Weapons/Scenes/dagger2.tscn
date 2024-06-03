@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpapmpis6g0rt"]
 
-[ext_resource type="ArrayMesh" uid="uid://cf8jke7vpkokr" path="res://Assets/Weapons/dagger2.obj" id="2_vkrmh"]
+[ext_resource type="ArrayMesh" uid="uid://cf8jke7vpkokr" path="res://Assets/Weapons/dagger2.obj" id="1_cpp3i"]
 
 [sub_resource type="Animation" id="Animation_47h5b"]
 length = 0.001
@@ -96,7 +96,7 @@ _data = {
 [node name="Dagger2" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_vkrmh")
+mesh = ExtResource("1_cpp3i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
