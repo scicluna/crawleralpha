@@ -42,15 +42,15 @@ func _ready():
 		print("Failed to load dash ability")
 	add_child(dash_ability)
 	movement_abilities.append(dash_ability)
-	
-	# Placeholder Weapon
-	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger3.tres")
-	
+		
 	# Placeholder Item Acquisition
 	# Will eventually all be handled in game
 	var new_item_data = load("res://Items/Weapons/Resources/dagger3.tres")
 	inventory.add_item(new_item_data, 1)
+	
+	# Placeholder Weapon
+	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
+	weapon_arm.load_weapon(inventory.get_item_by_name("dagger3").get_path())
 
 func _physics_process(delta):
 	for ability in movement_abilities:

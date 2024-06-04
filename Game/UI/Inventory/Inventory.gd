@@ -42,6 +42,16 @@ func remove_item(item_data: ItemData, amount: int = 1) -> void:
 			if slot.quantity <= 0:
 				slot.item_data = null
 			return
+			
+func get_item_by_index(item_index: int) -> ItemData:
+	var slot = items[item_index]
+	return slot.item_data 
+	
+func get_item_by_name(item_name: String) -> ItemData:
+	for item in items:
+		if item.item_data.name == item_name:
+			return item.item_data
+	return null
 
 func get_inventory_display() -> Array[Dictionary]:
 	var display: Array[Dictionary] = []
