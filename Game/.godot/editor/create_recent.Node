@@ -1,3 +1,8 @@
+GridContainer
+MarginContainer
+Container
+InventoryUI
+Inventory
 MeshInstance3D
 Weapon
 AnimationPlayer
@@ -8,7 +13,3 @@ CharacterBody3D
 CollisionShape3D
 Item
 GPUParticles3D
-Label3D
-Label
-RayCast3D
-Sprite3D

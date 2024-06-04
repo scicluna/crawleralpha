@@ -24,31 +24,33 @@ const FOV_CHANGE = .5
 @onready var camera := $Pivot/Camera3D
 @onready var weapon_arm := $Pivot/Camera3D/WeaponArm
 @onready var hit_box := $Pivot/Camera3D/WeaponArm/HitBox
+@onready var inventory := $Inventory
+@onready var inventory_ui := $Pivot/Camera3D/UI/InventoryUI
 @onready var movement_abilities: Array[Movement] = []
 
 var dashing = false
 var equipped_weapon: String = ""
+var inventory_open = false
 
 func _ready():
-	# Add movement abilities
+	# Placeholder Movement Ability Granted
+	# Will eventually need to obtain this in game
 	var dash_ability = load("res://Movement/Techniques/Dash.tscn")
-	
 	if dash_ability:
 		dash_ability = dash_ability.instantiate()
 	else:
 		print("Failed to load dash ability")
-	
 	add_child(dash_ability)
 	movement_abilities.append(dash_ability)
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
 	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger3.tres")
-
-func _unhandled_input(event: InputEvent) -> void:
-	_input(event)
-	for ability in movement_abilities:
-		ability.process_input(self, get_process_delta_time())
+	
+	# Placeholder Item Acquisition
+	# Will eventually all be handled in game
+	var new_item_data = load("res://Items/Weapons/Resources/dagger3.tres")
+	inventory.add_item(new_item_data, 1)
 
 func _physics_process(delta):
 	for ability in movement_abilities:
@@ -73,7 +75,7 @@ func _input(event: InputEvent) -> void:
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 			
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if weapon_arm.current_weapon:
 				weapon_arm.current_weapon.attack(null)  # Pass in player stats if necessary
@@ -88,6 +90,14 @@ func _input(event: InputEvent) -> void:
 		else:
 			if weapon_arm.current_weapon:
 				weapon_arm.current_weapon.stop()
+				
+	for ability in movement_abilities:
+		ability.process_input(self, get_process_delta_time())
+				
+	if event is InputEventKey and event.is_action_pressed("inventory_toggle"):
+		if event.pressed:
+			toggle_inventory()
+		
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -135,3 +145,18 @@ func fov_change(delta) -> void:
 	var velocity_clamped = clamp(velocity.length(), 0.5, MAX_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 5.0)
+
+func toggle_inventory():
+	print("toggle inventory", inventory_open)
+	inventory_open = !inventory_open
+	inventory_ui.visible = inventory_open
+	if inventory_open:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		inventory_ui.update_inventory_display()
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+func pick_up_item(item_data: ItemData, amount: int) -> void:
+	inventory.add_item(item_data, amount)
+	if inventory_ui.visible:
+		inventory_ui.update_inventory_display()

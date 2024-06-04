@@ -1,5 +1,4 @@
-res://Items/Weapons/Scenes/dagger_2.tscn
-res://Movement/Techniques/Resources/dash.gdshader
-res://Items/Weapons/Scenes/dagger_1.tscn
 res://Player/player.tscn
-res://Items/Weapons/Scenes/dagger_3.tscn
+res://Movement/Techniques/Resources/dash.gdshader
+res://Player/Player.gd
+res://UI/Inventory/InventoryUI.gd

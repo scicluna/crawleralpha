@@ -19,7 +19,7 @@ func take_damage(damage: int) -> void:
 		queue_free()
 		
 func show_damage_number(damage: int) -> void:
-	var damage_number = preload("res://UI/DamageNumbers.tscn").instantiate()
+	var damage_number = preload("res://UI/Combat/DamageNumbers.tscn").instantiate()
 	damage_number.text = str(damage)
 	
 	var angle = randf() * 2 * PI  # Random angle in radians

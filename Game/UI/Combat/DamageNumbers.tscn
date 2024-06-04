@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpj3qjk4ptaax"]
 
-[ext_resource type="Script" path="res://UI/DamageNumbers.gd" id="1_jnr5f"]
+[ext_resource type="Script" path="res://UI/Combat/DamageNumbers.gd" id="1_jnr5f"]
+
 
 [node name="DamageNumbers" type="Label3D"]
 billboard = 1
