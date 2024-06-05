@@ -1,3 +1,7 @@
+InteractableWeapon
+Dagger
+Interactable
+CollisionShape3D
 Label
 Panel
 GridContainer
@@ -8,8 +12,3 @@ Inventory
 MeshInstance3D
 Weapon
 AnimationPlayer
-Node3D
-Movement
-Camera3D
-CharacterBody3D
-CollisionShape3D

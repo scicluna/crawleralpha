@@ -1,24 +1,28 @@
 extends CharacterBody3D
+class_name Player
 
-#speed consts
+# speed consts
 const MAX_SPEED = 8.0
 const BACKPEDAL_SPEED = 3.0
 const ACCELERATION = 20.0
 const DECELERATION = 30.0
 const gravity = 12.50
 
-#jump consts
+# jump consts
 const AIR_DECELERATION = 10.0
 const JUMP_VELOCITY = 6
 
-#headbob consts
+# headbob consts
 const BOB_FREQ = 1.5
 const BOB_AMP = 0.05
 var t_bob = 0.0
 
-#fov consts
+# fov consts
 const BASE_FOV = 75
 const FOV_CHANGE = .5
+
+# handle interactables
+var nearby_interactables: Array[Interactable] = []
 
 @onready var neck := $Pivot
 @onready var camera := $Pivot/Camera3D
@@ -52,7 +56,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon(inventory.get_item_by_name("dagger3").get_path())
+	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger3.tres")
 
 func _physics_process(delta):
 	for ability in movement_abilities:
@@ -99,8 +103,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("inventory_toggle"):
 		if event.pressed:
 			toggle_inventory()
+			
+	if event is InputEventKey and event.is_action_pressed("interact"):
+		if event.pressed:
+			interact_with_nearest()
 		
-
 func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -149,7 +156,6 @@ func fov_change(delta) -> void:
 	camera.fov = lerp(camera.fov, target_fov, delta * 5.0)
 
 func toggle_inventory():
-	print("toggle inventory", inventory_open)
 	inventory_open = !inventory_open
 	inventory_ui.visible = inventory_open
 	if inventory_open:
@@ -162,3 +168,19 @@ func pick_up_item(item_data: ItemData, amount: int) -> void:
 	inventory.add_item(item_data, amount)
 	if inventory_ui.visible:
 		inventory_ui.update_inventory_display()
+
+func interact_with_nearest():
+	print("interactables:", nearby_interactables)
+	if nearby_interactables.size() > 0:
+		var nearest = nearby_interactables[0]  # Assuming the nearest is the first in the list
+		nearest.interact(self)
+
+func add_nearby_interactable(interactable):
+	print('add nearby')
+	if not nearby_interactables.has(interactable):
+		nearby_interactables.append(interactable)
+
+func remove_nearby_interactable(interactable):
+	print("remove nearby")
+	if nearby_interactables.has(interactable):
+		nearby_interactables.erase(interactable)

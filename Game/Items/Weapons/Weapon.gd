@@ -1,17 +1,20 @@
 extends Node3D
 class_name Weapon
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player := $AnimationPlayer
+@onready var interactable := $InteractableWeapon
 
-# Item data reference"mesh"
 var item_data: WeaponData
 
 var cooldown_timer: Timer = null
 var hitbox: RayCast3D = null
 
+var is_equipped := false
+
 func _ready() -> void:
 	# Connect the animation finished signal
 	animation_player.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	interactable.connect("interacted", Callable(self, "on_interacted"))
 
 func attack(player_stats) -> void:
 	if animation_player.has_animation("attack") and cooldown_timer.is_stopped():
@@ -31,6 +34,7 @@ func stop() -> void:
 
 func equip(weapon_data: WeaponData, ray: RayCast3D) -> void:
 	item_data = weapon_data
+	is_equipped = true
 	print("Weapon equipped: %s" % item_data.name)
 	
 	# Configure Attack Cooldown Timer
@@ -44,6 +48,7 @@ func equip(weapon_data: WeaponData, ray: RayCast3D) -> void:
 	hitbox.update_range(item_data.range)
 
 func unequip() -> void:
+	is_equipped = false
 	# Define what happens when the weapon is unequipped
 	print("Weapon unequipped: %s" % item_data.name)
 

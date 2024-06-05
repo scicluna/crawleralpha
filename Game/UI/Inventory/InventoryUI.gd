@@ -6,7 +6,7 @@ class_name InventoryUI
 @onready var item_container: GridContainer = $Panel/MarginContainer/InventoryGrid
 @onready var hover_label: Label = $Panel/HoverLabel
 
-var dragged_item: ItemSlot = null
+var dragged_item: ItemSlot
 var dragged_item_slot_index: int = -1
 var drag_preview: TextureRect = null
 var is_dragging: bool = false
@@ -63,6 +63,7 @@ func update_inventory_display() -> void:
 		item_container.add_child(slot_container)
 
 func _on_item_icon_gui_input(event: InputEvent, slot_index: int) -> void:
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			_start_drag(slot_index)
@@ -107,7 +108,7 @@ func _drop_item(slot_index: int) -> void:
 			
 			# Delete the Origin point if we didn't just swap
 			if inventory.items[dragged_item_slot_index] == dragged_item and slot_index != dragged_item_slot_index:
-				inventory.items[dragged_item_slot_index] = null
+				inventory.items[dragged_item_slot_index] = ItemSlot.new()
 				
 			# Get rid of dragged_item and turn off dragging
 			dragged_item = null
@@ -127,7 +128,7 @@ func _drop_item(slot_index: int) -> void:
 			
 			# Delete the Origin point if we didn't just swap
 			if inventory.items[dragged_item_slot_index] == dragged_item:
-				inventory.items[dragged_item_slot_index] = null
+				inventory.items[dragged_item_slot_index] = ItemSlot.new()
 			
 			# Change drag preview to the new item
 			drag_preview.texture = new_item.item_data.icon
@@ -174,17 +175,16 @@ func _input(event: InputEvent) -> void:
 				item_instance.position = player.position
 				item_instance.position.z -= 0.2
 				item_instance.position.y += 0.25
+				item_instance.item_data = dragged_item.item_data
 				get_parent().add_child(item_instance)
 				if drag_preview != null:
 					remove_child(drag_preview)
 					drag_preview = null
-				inventory.items[dragged_item_slot_index] = null
+				inventory.items[dragged_item_slot_index] = ItemSlot.new()
 				dragged_item = null
 				dragged_item_slot_index = -1
 				is_dragging = false
 				update_inventory_display()
-
-
 
 func display_description(slot_index: int) -> void:
 	var slot = inventory.items[slot_index]

@@ -18,8 +18,8 @@ func add_item(item_data: ItemData, amount: int = 1) -> void:
 	
 	# First try to add to existing slots with the same item
 	for slot in items:
-		if slot.item_data == item_data:
-			amount = slot.add_quantity(amount)
+		if slot and slot.item_data == item_data:
+			amount = slot.add_quantity(item_data, amount)
 			if amount == 0:
 				return
 
@@ -27,7 +27,7 @@ func add_item(item_data: ItemData, amount: int = 1) -> void:
 	for slot in items:
 		if slot.item_data == null:
 			slot.item_data = item_data
-			amount = slot.add_quantity(amount)
+			amount = slot.add_quantity(item_data, amount)
 			if amount == 0:
 				return
 
@@ -52,14 +52,3 @@ func get_item_by_name(item_name: String) -> ItemData:
 		if item.item_data.name == item_name:
 			return item.item_data
 	return null
-
-func get_inventory_display() -> Array[Dictionary]:
-	var display: Array[Dictionary] = []
-	for slot in items:
-		if slot.item_data != null:
-			display.append({
-				"item_name": slot.item_data.name,
-				"quantity": slot.quantity,
-				"icon": slot.item_data.icon
-			})
-	return display

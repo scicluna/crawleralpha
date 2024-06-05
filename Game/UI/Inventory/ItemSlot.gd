@@ -1,11 +1,13 @@
 extends Node
 class_name ItemSlot
 
-@export var item_data: ItemData
-@export var quantity: int
+var item_data: ItemData
+var quantity: int
 const MAX_QUANTITY = 99
 
-func add_quantity(value: int) -> int:
+func add_quantity(new_item: ItemData, value: int) -> int:
+	item_data = new_item
+	
 	if item_data == null:
 		return value
 
