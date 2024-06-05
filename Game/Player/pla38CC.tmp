@@ -46,7 +46,6 @@ script = ExtResource("6_ntukd")
 [node name="UI" type="CanvasLayer" parent="Pivot/Camera3D"]
 
 [node name="InventoryUI" type="Control" parent="Pivot/Camera3D/UI"]
-visible = false
 layout_mode = 3
 anchor_left = 0.589
 anchor_top = 0.133
@@ -59,28 +58,15 @@ offset_bottom = -86.184
 grow_horizontal = 2
 script = ExtResource("5_b2wxe")
 
-[node name="Panel" type="Panel" parent="Pivot/Camera3D/UI/InventoryUI"]
-self_modulate = Color(0, 0, 0, 1)
-texture_filter = 1
+[node name="MarginContainer" type="MarginContainer" parent="Pivot/Camera3D/UI/InventoryUI"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 289.0
-offset_right = 379.0
-offset_bottom = 570.0
+offset_left = 293.0
+offset_top = 240.0
+offset_right = 536.0
+offset_bottom = 406.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Pivot/Camera3D/UI/InventoryUI/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventoryGrid" type="GridContainer" parent="Pivot/Camera3D/UI/InventoryUI/Panel/MarginContainer"]
+[node name="InventoryGrid" type="GridContainer" parent="Pivot/Camera3D/UI/InventoryUI/MarginContainer"]
 layout_mode = 2
-columns = 5
 
 [node name="CombatUI" type="Control" parent="Pivot/Camera3D/UI"]
 layout_mode = 3

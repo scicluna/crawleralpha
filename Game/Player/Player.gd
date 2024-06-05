@@ -46,7 +46,9 @@ func _ready():
 	# Placeholder Item Acquisition
 	# Will eventually all be handled in game
 	var new_item_data = load("res://Items/Weapons/Resources/dagger3.tres")
+	var another_data = load("res://Items/Weapons/Resources/dagger2.tres")
 	inventory.add_item(new_item_data, 1)
+	inventory.add_item(another_data, 1)
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
@@ -64,7 +66,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and not inventory_open:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -75,7 +77,7 @@ func _input(event: InputEvent) -> void:
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 			
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not inventory_open:
 		if event.pressed:
 			if weapon_arm.current_weapon:
 				weapon_arm.current_weapon.attack(null)  # Pass in player stats if necessary
@@ -83,7 +85,7 @@ func _input(event: InputEvent) -> void:
 				if weapon_arm.current_weapon:
 					weapon_arm.current_weapon.stop()
 			
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and not inventory_open:
 		if event.pressed:
 			if weapon_arm.current_weapon:
 				weapon_arm.current_weapon.parry()

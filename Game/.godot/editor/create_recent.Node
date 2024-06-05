@@ -1,3 +1,4 @@
+Panel
 GridContainer
 MarginContainer
 Container
@@ -12,4 +13,3 @@ Camera3D
 CharacterBody3D
 CollisionShape3D
 Item
-GPUParticles3D
