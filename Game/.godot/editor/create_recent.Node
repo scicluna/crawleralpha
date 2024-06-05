@@ -1,3 +1,4 @@
+Label
 Panel
 GridContainer
 MarginContainer
@@ -12,4 +13,3 @@ Movement
 Camera3D
 CharacterBody3D
 CollisionShape3D
-Item

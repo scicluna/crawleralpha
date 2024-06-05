@@ -1,2 +1,8 @@
-res://Items/Weapons/Scenes/dagger_3.tscn
+res://Player/player.tscn
 res://Movement/Techniques/Resources/dash.gdshader
+res://Items/Weapons/Scenes/dagger_1.tscn
+res://Items/Weapons/Scenes/dagger_2.tscn
+res://Items/Weapons/Scenes/dagger_3.tscn
+res://UI/Inventory/InventoryUI.gd
+res://UI/Inventory/ItemSlot.gd
+res://Assets/Sprites/cross.tres
