@@ -1,12 +1,9 @@
-res://Items/Weapons/Scenes/dagger_2.tscn
-res://Movement/Techniques/Resources/dash.gdshader
 res://Player/player.tscn
-res://Items/Weapons/Scenes/dagger_3.tscn
+res://Movement/Techniques/Resources/dash.gdshader
+res://Items/Weapons/Scenes/dagger_2.tscn
 res://Items/Weapons/Weapon.gd
-res://Actions/Interactable.gd
-res://Actions/InteractableWeapon.gd
-res://Items/Weapons/Dagger.gd
+res://Items/Weapons/Scenes/dagger_3.tscn
 res://Player/Player.gd
-res://UI/Inventory/Inventory.gd
 res://UI/Inventory/InventoryUI.gd
-res://UI/Inventory/ItemSlot.gd
+res://Items/Weapons/Dagger.gd
+res://Player/WeaponArm.gd

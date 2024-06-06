@@ -30,6 +30,7 @@ var nearby_interactables: Array[Interactable] = []
 @onready var hit_box := $Pivot/Camera3D/WeaponArm/HitBox
 @onready var inventory := $Inventory
 @onready var inventory_ui := $Pivot/Camera3D/UI/InventoryUI
+@onready var tooltip := $Pivot/Camera3D/UI/ActionUI/Tooltip
 @onready var movement_abilities: Array[Movement] = []
 
 var dashing = false
@@ -56,7 +57,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger3.tres")
+	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger2.tres")
 
 func _physics_process(delta):
 	for ability in movement_abilities:
@@ -170,17 +171,24 @@ func pick_up_item(item_data: ItemData, amount: int) -> void:
 		inventory_ui.update_inventory_display()
 
 func interact_with_nearest():
-	print("interactables:", nearby_interactables)
 	if nearby_interactables.size() > 0:
 		var nearest = nearby_interactables[0]  # Assuming the nearest is the first in the list
 		nearest.interact(self)
 
 func add_nearby_interactable(interactable):
-	print('add nearby')
 	if not nearby_interactables.has(interactable):
 		nearby_interactables.append(interactable)
+		update_tooltip()
 
 func remove_nearby_interactable(interactable):
-	print("remove nearby")
 	if nearby_interactables.has(interactable):
 		nearby_interactables.erase(interactable)
+		update_tooltip()
+
+func update_tooltip():
+	if nearby_interactables.size() > 0:
+		tooltip.visible = true
+		print("show tooltip")
+	else:
+		print("hide tooltip")
+		tooltip.visible = false

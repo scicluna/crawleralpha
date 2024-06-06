@@ -3,18 +3,23 @@ class_name Weapon
 
 @onready var animation_player := $AnimationPlayer
 @onready var interactable := $InteractableWeapon
-
+var is_equipped := false
 var item_data: WeaponData
-
 var cooldown_timer: Timer = null
 var hitbox: RayCast3D = null
-
-var is_equipped := false
+var shine_played := false
 
 func _ready() -> void:
 	# Connect the animation finished signal
 	animation_player.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	interactable.connect("interacted", Callable(self, "on_interacted"))
+	
+func _process(delta: float) -> void:
+	if not is_equipped:
+		rotate_y(delta * 0.5)  # Rotate the weapon around the Y-axis
+		if not shine_played:
+			animation_player.play("shine")
+			shine_played = true
 
 func attack(player_stats) -> void:
 	if animation_player.has_animation("attack") and cooldown_timer.is_stopped():

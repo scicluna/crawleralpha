@@ -127,7 +127,7 @@ func _drop_item(slot_index: int) -> void:
 			inventory.items[slot_index] = dragged_item
 			
 			# Delete the Origin point if we didn't just swap
-			if inventory.items[dragged_item_slot_index] == dragged_item:
+			if inventory.items[dragged_item_slot_index] == dragged_item and dragged_item_slot_index != slot_index:
 				inventory.items[dragged_item_slot_index] = ItemSlot.new()
 			
 			# Change drag preview to the new item
@@ -171,12 +171,24 @@ func _input(event: InputEvent) -> void:
 				
 			# Dropping outside of inventory
 			if not inventory_rect.has_point(mouse_position):
-				var item_instance = dragged_item.item_data.model.instantiate()
-				item_instance.position = player.position
-				item_instance.position.z -= 0.2
-				item_instance.position.y += 0.25
+				var item_instance = dragged_item.item_data.model.duplicate(true).instantiate()
+					
+				# Get the camera node
+				var camera = player.get_node("Pivot/Camera3D")
+				
+				# Calculate the drop position in front of the camera
+				var forward_vector = -camera.global_transform.basis.z.normalized()
+				var drop_position = camera.global_transform.origin + (forward_vector * 1.0)  # Drop the item 1 unit in front of the camera
+				drop_position.y = player.global_transform.origin.y  # Keep the drop height consistent with the player's position
+				item_instance.position = drop_position
 				item_instance.item_data = dragged_item.item_data
+				
+				# Set animation for dropped item
+				if item_instance is Weapon:
+					item_instance.is_equipped = false
+				
 				get_parent().add_child(item_instance)
+				
 				if drag_preview != null:
 					remove_child(drag_preview)
 					drag_preview = null

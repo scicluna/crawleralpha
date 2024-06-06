@@ -1,8 +1,9 @@
+Label
+Control
+CollisionShape3D
 InteractableWeapon
 Dagger
 Interactable
-CollisionShape3D
-Label
 Panel
 GridContainer
 MarginContainer
@@ -11,4 +12,3 @@ InventoryUI
 Inventory
 MeshInstance3D
 Weapon
-AnimationPlayer

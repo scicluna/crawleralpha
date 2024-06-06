@@ -12,7 +12,7 @@ func load_weapon(weapon_path: String) -> void:
 		# Instance the model from WeaponData
 		var weapon_scene = weapon_data.model
 		if weapon_scene:
-			var weapon_instance = weapon_scene.instantiate()
+			var weapon_instance = weapon_scene.duplicate(true).instantiate()
 			
 			# Check if the instance has the Weapon script attached
 			if weapon_instance and weapon_instance is Weapon:
