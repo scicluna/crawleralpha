@@ -9,6 +9,7 @@ class_name ArmorData
 	"defense": 0
 }
 enum ItemSlot {
+	WEAPON,
 	RING,
 	ACCESSORY,
 	BACK,

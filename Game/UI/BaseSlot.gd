@@ -1,9 +1,13 @@
 extends Node
-class_name ItemSlot
+class_name BaseSlot
 
-var item_data: ItemData
-var quantity: int
-const MAX_QUANTITY = 99
+@export var MAX_QUANTITY := 99
+
+var item_data: ItemData = null
+var quantity: int = 0
+
+func can_equip(item: ItemData) -> bool:
+	return true  # Override in derived classes if necessary
 
 func add_quantity(new_item: ItemData, value: int) -> int:
 	item_data = new_item

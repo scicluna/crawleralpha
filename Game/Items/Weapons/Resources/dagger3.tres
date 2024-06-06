@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c545relsxj3kb" path="res://Items/Weapons/Scenes/dagger_3.tscn" id="2_s270i"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_6ejof")
 damage = 5
 attack_speed = 0.15

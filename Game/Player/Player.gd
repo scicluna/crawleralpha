@@ -29,7 +29,9 @@ var nearby_interactables: Array[Interactable] = []
 @onready var weapon_arm := $Pivot/Camera3D/WeaponArm
 @onready var hit_box := $Pivot/Camera3D/WeaponArm/HitBox
 @onready var inventory := $Inventory
-@onready var inventory_ui := $Pivot/Camera3D/UI/InventoryUI
+@onready var equipment := $Equipment
+@onready var inventory_ui := $Pivot/Camera3D/UI/ItemUI/InventoryPanel
+@onready var equipment_ui := $Pivot/Camera3D/UI/ItemUI/EquipmentPanel
 @onready var tooltip := $Pivot/Camera3D/UI/ActionUI/Tooltip
 @onready var movement_abilities: Array[Movement] = []
 
@@ -57,7 +59,7 @@ func _ready():
 	
 	# Placeholder Weapon
 	# Will eventually need a way to change out weapons. but since its tied to just a string, should be easy
-	weapon_arm.load_weapon("res://Items/Weapons/Resources/dagger2.tres")
+	equipment.equip_item(new_item_data.duplicate(true))
 
 func _physics_process(delta):
 	for ability in movement_abilities:
@@ -161,14 +163,16 @@ func toggle_inventory():
 	inventory_ui.visible = inventory_open
 	if inventory_open:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		inventory_ui.update_inventory_display()
+		inventory_ui.update_display()
+		equipment_ui.update_display()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 func pick_up_item(item_data: ItemData, amount: int) -> void:
+	print(item_data.name)
 	inventory.add_item(item_data, amount)
 	if inventory_ui.visible:
-		inventory_ui.update_inventory_display()
+		inventory_ui.update_display()
 
 func interact_with_nearest():
 	if nearby_interactables.size() > 0:

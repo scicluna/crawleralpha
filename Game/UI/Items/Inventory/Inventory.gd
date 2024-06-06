@@ -2,7 +2,7 @@ extends Node
 class_name Inventory
 
 @export var max_slots: int = 20
-var items: Array[ItemSlot] = []
+var items: Array[BaseSlot] = []
 
 func _ready() -> void:
 	initialize_slots()
@@ -10,7 +10,7 @@ func _ready() -> void:
 func initialize_slots() -> void:
 	items.resize(max_slots)
 	for i in range(max_slots):
-		var slot = ItemSlot.new()
+		var slot = BaseSlot.new()
 		items[i] = slot
 
 func add_item(item_data: ItemData, amount: int = 1) -> void:
@@ -26,7 +26,6 @@ func add_item(item_data: ItemData, amount: int = 1) -> void:
 	# If there is overflow, add to new slots
 	for slot in items:
 		if slot.item_data == null:
-			slot.item_data = item_data
 			amount = slot.add_quantity(item_data, amount)
 			if amount == 0:
 				return
